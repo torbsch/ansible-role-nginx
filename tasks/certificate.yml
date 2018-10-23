@@ -11,17 +11,17 @@
 
 - name: Generate an OpenSSL private key.
   openssl_privatekey:
-    path: "{{ ssl_directory }}/private.key"
+    path: "{{ private_key_path }}"
 
 - name: Generate an OpenSSL CSR.
   openssl_csr:
-    path: "{{ ssl_directory }}/{{ hostname }}.csr"
-    privatekey_path: "{{ ssl_directory }}/private.key"
+    path: "{{ signing_request_path }}"
+    privatekey_path: "{{ private_key_path }}"
     common_name: "{{ hostname }}"
 
 - name: Generate a Self Signed OpenSSL certificate.
   openssl_certificate:
-    path: "{{ ssl_directory }}/public.pem"
-    privatekey_path: "{{ ssl_directory }}/private.key"
-    csr_path: "{{ ssl_directory }}/{{ hostname }}.csr"
-    provider: selfsigned
+    path: "{{ public_certificate_path }}"
+    privatekey_path: "{{ private_key_path }}"
+    csr_path: "{{ signing_request_path }}"
+    provider: "{{ certificate_provider }}"

@@ -6,4 +6,8 @@ nginx_repository_src: deb-src http://nginx.org/packages/debian/ stretch nginx
 
 # SSL
 ssl_directory: /etc/nginx/ssl
-hostname: hostname
+hostname: localhost
+private_key_path: "{{ ssl_directory }}/private.key"
+public_certificate_path: "{{ ssl_directory }}/public.pem"
+signing_request_path: "{{ ssl_directory }}/{{ hostname }}.csr"
+certificate_provider: selfsigned
