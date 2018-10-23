@@ -1,0 +1,9 @@
+---
+# nginx Installation
+nginx_signing_key: http://nginx.org/keys/nginx_signing.key
+nginx_repository: deb http://nginx.org/packages/debian/ stretch nginx
+nginx_repository_src: deb-src http://nginx.org/packages/debian/ stretch nginx
+
+# SSL
+ssl_directory: /etc/nginx/ssl
+hostname: hostname

@@ -1,17 +1,17 @@
 ---
 - name: Add Nginx Repository Key
   apt_key:
-    url: http://nginx.org/keys/nginx_signing.key
+    url: "{{ nginx_signing_key }}"
     state: present
 
 - name: Add Nginx Repository
   apt_repository:
-    repo: deb http://nginx.org/packages/debian/ stretch nginx
+    repo: "{{ nginx_repository }}"
     state: present
 
 - name: Add Nginx Repository (Source)
   apt_repository:
-   repo: deb-src http://nginx.org/packages/debian/ stretch nginx
+   repo: "{{ nginx_repository_src }}"
    state: present
 
 - name: Install nginx
