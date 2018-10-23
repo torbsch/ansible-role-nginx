@@ -1,0 +1,27 @@
+---
+- name: Install python-openssl
+  package:
+    name: python-openssl
+    state: present
+
+- name: Ensure directory exists for local self-signed TLS certs.
+  file:
+    path: /etc/nginx/ssl
+    state: directory
+
+- name: Generate an OpenSSL private key.
+  openssl_privatekey:
+    path: /etc/nginx/ssl/private.key
+
+- name: Generate an OpenSSL CSR.
+  openssl_csr:
+    path: /etc/nginx/ssl/hostname.csr
+    privatekey_path: /etc/nginx/ssl/private.key
+    common_name: hostname
+
+- name: Generate a Self Signed OpenSSL certificate.
+  openssl_certificate:
+    path: /etc/nginx/ssl/public.pem
+    privatekey_path: /etc/nginx/ssl/private.key
+    csr_path: /etc/nginx/ssl/hostname.csr
+    provider: selfsigned
