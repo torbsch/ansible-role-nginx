@@ -1,6 +1,7 @@
 ---
 - import_tasks: installation.yml
 - import_tasks: certificate.yml
+- import_tasks: iptables_accept_incoming_https.yml
 
 - name: Copy default.conf to server
   copy:
