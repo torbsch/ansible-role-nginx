@@ -4,6 +4,10 @@ nginx_signing_key: http://nginx.org/keys/nginx_signing.key
 nginx_repository: deb http://nginx.org/packages/debian/ stretch nginx
 nginx_repository_src: deb-src http://nginx.org/packages/debian/ stretch nginx
 
+# nginx-Configuration-Paths
+nginx_configuration_source: files/conf/default.conf
+nginx_configuration_destination: /etc/nginx/conf.d/default.conf
+
 # SSL
 ssl_directory: /etc/nginx/ssl
 hostname: localhost
@@ -11,3 +15,4 @@ private_key_path: "{{ ssl_directory }}/private.key"
 public_certificate_path: "{{ ssl_directory }}/public.pem"
 signing_request_path: "{{ ssl_directory }}/{{ hostname }}.csr"
 certificate_provider: selfsigned
+
