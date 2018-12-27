@@ -5,8 +5,8 @@ nginx_repository: deb http://nginx.org/packages/debian/ stretch nginx
 nginx_repository_src: deb-src http://nginx.org/packages/debian/ stretch nginx
 
 # nginx-Configuration-Paths
-nginx_configuration_source: files/conf/default.conf
-nginx_configuration_destination: /etc/nginx/conf.d/default.conf
+nginx_configuration_source: files/conf/
+nginx_configuration_destination: /etc/nginx/conf.d
 
 # SSL
 ssl_directory: /etc/nginx/ssl

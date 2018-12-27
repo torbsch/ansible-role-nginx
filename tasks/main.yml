@@ -11,16 +11,7 @@
     group: root
     mode: 0755
 
-- name: Copy error.conf to server
-  copy:
-    src: files/conf
-    dest: /etc/nginx/
-    owner: root
-    group: root
-    mode: 0644
-  notify: Reload nginx
-
-- name: Copy default.conf to server
+- name: Copy nginx configuration files 
   copy:
     src: "{{ nginx_configuration_source }}"
     dest: "{{ nginx_configuration_destination }}"
